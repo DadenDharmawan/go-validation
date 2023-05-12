@@ -1,9 +1,16 @@
 package govalidation
 
+import (
+	"regexp"
+)
+
 func Lambda(name string) bool {
 	if name != "" {
-		return true
-	} else {
-		return false
+		regex := regexp.MustCompile("[0-9]+")
+		ismatch := regex.MatchString(name)
+		if !ismatch {
+			return true
+		}
 	}
+	return false
 }
